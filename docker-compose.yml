@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  wled-simulator:
+    build: .
+    container_name: wled-simulator
+    ports:
+      - "80:80"           # HTTP/WebSocket interface
+      - "21324:21324/udp" # UDP Sync
+      - "6454:6454/udp"   # Art-Net
+      - "5568:5568/udp"   # sACN (E1.31)
+    environment:
+      - NUM_LEDS=100
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
