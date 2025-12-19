@@ -48,8 +48,9 @@ void LEDRenderer::renderToConsole() {
     std::lock_guard<std::mutex> lock(ledMutex);
     printf("\n=== LED Strip (%d LEDs) ===\n", numLeds);
     
-    // Show first 20 LEDs in a more detailed view
-    int displayCount = numLeds < 20 ? numLeds : 20;
+    // Show first LEDs in a more detailed view
+    const int MAX_CONSOLE_DISPLAY_LEDS = 20;
+    int displayCount = numLeds < MAX_CONSOLE_DISPLAY_LEDS ? numLeds : MAX_CONSOLE_DISPLAY_LEDS;
     for (int i = 0; i < displayCount; i++) {
         const auto& led = leds[i];
         printf("LED %3d: R=%3d G=%3d B=%3d W=%3d ", i, led.r, led.g, led.b, led.w);

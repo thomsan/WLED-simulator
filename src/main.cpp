@@ -50,9 +50,9 @@ int main(int argc, char* argv[]) {
     
     simulator->start();
     
-    // Keep the main thread alive
-    while (true) {
-        delay(1000);
+    // Keep the main thread alive until signal is received
+    while (simulator) {
+        delay(100);
     }
     
     return 0;

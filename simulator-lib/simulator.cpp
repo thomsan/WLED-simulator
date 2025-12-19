@@ -59,15 +59,16 @@ void WLEDSimulator::stop() {
 void WLEDSimulator::simulatorLoop() {
     printf("Starting simulator main loop...\n");
     
+    const double TWO_PI = 6.283185307179586;
     int frame = 0;
     while (running) {
         // Simple rainbow animation for demonstration
         // In a real implementation, this would call WLED's effect engine
         for (int i = 0; i < numLeds; i++) {
             double hue = (double)(i + frame) / numLeds;
-            double r = std::sin(hue * 6.28318) * 127.0 + 128.0;
-            double g = std::sin((hue + 0.33) * 6.28318) * 127.0 + 128.0;
-            double b = std::sin((hue + 0.66) * 6.28318) * 127.0 + 128.0;
+            double r = std::sin(hue * TWO_PI) * 127.0 + 128.0;
+            double g = std::sin((hue + 0.33) * TWO_PI) * 127.0 + 128.0;
+            double b = std::sin((hue + 0.66) * TWO_PI) * 127.0 + 128.0;
             
             renderer->setPixel(i, (uint8_t)r, (uint8_t)g, (uint8_t)b);
         }

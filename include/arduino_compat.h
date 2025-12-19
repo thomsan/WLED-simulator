@@ -49,7 +49,7 @@ public:
 extern SerialClass Serial;
 
 // Math functions (use inline functions to avoid macro conflicts)
-inline int absInt(int x) { return x > 0 ? x : -x; }
+inline int absInt(int x) { return x >= 0 ? x : -x; }
 inline int constrainInt(int amt, int low, int high) { return amt < low ? low : (amt > high ? high : amt); }
 inline int mapInt(int x, int in_min, int in_max, int out_min, int out_max) { 
     return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min; 
